@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Art — Justine Braun</title>
+<meta name="description" content="Drawings, paintings, painted objects, communal pieces and public experiments by Justine Braun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe6; --ink:#16182a; --soft:#56586b; --line:rgba(22,24,42,.14);
+    --coral:#e8604c; --teal:#2a8c82; --gold:#e3a72f; --card:#fbf8f2;
+    --serif:"Fraunces",Georgia,serif; --sans:"DM Sans",system-ui,sans-serif; --mono:"DM Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+  a{color:inherit}
+  img{display:block}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+  .mono{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(244,239,230,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--ink)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+  .name{font-family:var(--serif);font-size:1.3rem;font-weight:600;text-decoration:none}
+  .name i{font-weight:300}
+  .links{display:flex;gap:22px;list-style:none;align-items:center}
+  .links a{text-decoration:none;font-size:.95rem}
+  .links a[aria-current]{text-decoration:underline;text-underline-offset:4px}
+  .pill{background:var(--coral);color:#fff;padding:7px 14px;border-radius:999px;border:1px solid var(--ink);font-weight:700}
+  @media (max-width:640px){.links li.hide-m{display:none}}
+
+  header{padding:64px 0 28px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.8rem,7vw,5rem);letter-spacing:-.03em;line-height:1}
+  h1 b{font-weight:700}
+  .lede{color:var(--soft);font-size:1.15rem;max-width:36em;margin-top:14px}
+
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 22px}
+  .chip{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--ink);border-radius:999px;background:var(--card);cursor:pointer;color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .chip .n{opacity:.6;margin-left:4px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;padding-bottom:80px}
+  .tile{position:relative;aspect-ratio:1;border:1px solid var(--ink);overflow:hidden;background:var(--card);cursor:zoom-in;padding:0;font:inherit;color:inherit;text-align:left}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .tile:hover img,.tile:focus-visible img{transform:scale(1.07)}
+  .tile .lab{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(22,24,42,.85));color:#fff;opacity:0;transition:opacity .25s}
+  .tile:hover .lab,.tile:focus-visible .lab{opacity:1}
+  .tile .lab b{font-family:var(--serif);font-size:1rem;display:block;line-height:1.15}
+  .tile .lab span{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+  .tile.text{display:flex;flex-direction:column;justify-content:flex-end;padding:14px;cursor:pointer;text-decoration:none}
+  @media (hover:none){.tile .lab{opacity:1}}
+  @media (max-width:520px){.grid{grid-template-columns:repeat(3,1fr);gap:6px}.tile .lab{display:none}}
+
+  dialog{border:1px solid var(--ink);padding:0;max-width:min(92vw,1000px);width:100%;background:var(--card);color:var(--ink)}
+  dialog::backdrop{background:rgba(22,24,42,.82)}
+  .lb{display:grid;grid-template-columns:1.5fr 1fr}
+  .lb img{width:100%;max-height:82vh;object-fit:contain;background:#1e2033}
+  .lb .info{padding:26px;display:flex;flex-direction:column;gap:10px}
+  .lb h2{font-family:var(--serif);font-size:1.8rem;line-height:1.1}
+  .lb p{color:var(--soft)}
+  .lb .nav{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .lb button,.lb a.btn{font:inherit;font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--ink);border-radius:999px;background:var(--paper);cursor:pointer;text-decoration:none;color:var(--ink)}
+  @media (max-width:760px){.lb{grid-template-columns:1fr}.lb img{max-height:60vh}}
+
+  .cta{border-top:1px solid var(--ink);padding:44px 0;background:#efe8db}
+  .cta .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+  .cta p{font-family:var(--serif);font-size:1.4rem;max-width:30em}
+  .cta a{background:var(--coral);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px;border:1px solid var(--ink)}
+  footer{padding:24px 0;font-size:.9rem;color:var(--soft)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="../index.html">Justine <i>Braun</i></a>
+    <ul class="links">
+      <li><a href="index.html" aria-current="page">Art</a></li>
+      <li class="hide-m"><a href="../community/index.html">Community</a></li>
+      <li class="hide-m"><a href="../index.html#data">Data</a></li>
+      <li><a class="pill" href="https://squidbird.io">Squidbird ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <p class="mono" style="color:var(--coral);margin-bottom:12px">Everything, roughly</p>
+    <h1>The <b>art</b> pile</h1>
+    <p class="lede">Drawings on the train, paintings on the wall, patterns on every wooden object in my apartment, and resin, collage, cardboard, and a few things made with friends. Click anything to see it bigger.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter by type"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+</main>
+
+<dialog id="lb" aria-label="Artwork viewer">
+  <div class="lb">
+    <img id="lbImg" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
+    <div class="info">
+      <p class="mono" id="lbType" style="color:var(--coral)"></p>
+      <h2 id="lbTitle"></h2>
+      <p id="lbDesc"></p>
+      <div class="nav">
+        <button id="prev" aria-label="Previous">← Prev</button>
+        <button id="next" aria-label="Next">Next →</button>
+        <a class="btn" id="lbLink" hidden>Read the story</a>
+        <button id="close">Close ✕</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<div class="cta">
+  <div class="wrap">
+    <p>Want to make something together? I host art nights, resin nights, and PowerPoint parties.</p>
+    <a href="../community/index.html">Community →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Justine Braun · Chicago</span>
+    <a href="../index.html">← Home</a>
+  </div>
+</footer>
+
+<script>
+/* Edit this list to add, remove, rename or reorder work.
+   type: Data art | Film | Drawing | Painting | Collage | Objects | Sculpture | Wearable | Communal | Photo | Protest   */
+const ART = [
+  {f:'succulents',            t:'Succulent study',             type:'Drawing',  d:'Dense, obsessive pattern: succulents, star flowers and a mosaic floor.'},
+  {f:'data-art-stripes',      t:'Data art: bands & arrows',    type:'Data art', d:'A data visualization turned composition: colored bands, a wandering dotted line, and stacks of arrow marks.'},
+  {f:'../film/still-flowers-camera',t:'We Are Here (film still)',type:'Film',  d:'From We Are Here, a short about government surveillance made for the 48 Hour Film Project Chicago 2026.', link:'../index.html#film'},
+  {f:'guaruras-collage',      t:'Guaruras',                    type:'Collage',  d:'Mixed media on wood: a haloed justice, a striped forest, dotted constellations, and two very toothy sharks.'},
+  {f:'painted-table-2',       t:'The other table',             type:'Objects',  d:'A second tabletop, painted edge to edge in paint pen: mushrooms, ferns, a sleeping tiger and a lot of gold.'},
+  {f:'coloring-poster',       t:'Coloring poster, finished',   type:'Drawing',  d:'A Velvet Mexican Streets coloring poster (line art by JAZOR), colored in with marker and watercolor, plus a garden I added around the edges.'},
+  {f:'resin-coasters',        t:'Resin coasters',              type:'Objects',  d:'Pressed flowers, copper leaf and gold flake set in resin. Made at a resin night.', link:'../community/index.html#resin'},
+  {f:'cardboard-jaws',        t:'Cardboard jaws',              type:'Sculpture',d:'A cardboard monster mouth with foam teeth and a scribbled red tongue.'},
+  {f:'resin-pieces',          t:'Resin earrings',              type:'Objects',  d:'Glittery resin shapes waiting to become earrings.', link:'../community/index.html#resin'},
+  {f:'rbg-sharks-sketch',     t:'Guaruras, in pieces',         type:'Collage',  d:'The cut-outs before they were glued down.'},
+  {f:'resin-coaster-hand',    t:'Pressed garden, held',        type:'Objects',  d:'A resin coaster with pressed flowers and gold leaf.'},
+  {f:'studio-cat',            t:'Studio supervisor',           type:'Photo',    d:'Every piece is approved by the cat before it is finished.'},
+  {f:'pink-river-painting',   t:'Pink river',                  type:'Painting', d:'Canvas painting of layered teal and coral currents with gold seaweed forms.'},
+  {f:'table/04-finished-wide',t:'Draw on the Furniture',       type:'Communal', d:'A plywood table drawn on by ten friends at a Galentine\'s gathering, then stitched into one landscape.', link:'../community/index.html#furniture'},
+  {f:'surveillance-collage',  t:'Watched garden',              type:'Painting', d:'A painted jungle with cut-out surveillance cameras, mics and fingerprint scanners hiding in the leaves.'},
+  {f:'dreamscape',            t:'Birds with opinions',         type:'Drawing',  d:'Colored pencil dreamscape of hills, little buildings, rays, and very opinionated birds.'},
+  {f:'dog-in-glasses',        t:'Dog in glasses',              type:'Drawing',  d:'Ink and watercolor portrait of a very distinguished dog.'},
+  {f:'river-card',            t:'River, 1.9.26',               type:'Drawing',  d:'Small ink and marker landscape: mountains, a winding river, daisies in the foreground.'},
+  {f:'cafe-scene',            t:'Café afternoon',              type:'Drawing',  d:'Ink and watercolor of a café interior, drawn on the spot.'},
+  {f:'painted-tray-lotus',    t:'Painted tray, flowers',       type:'Objects',  d:'Wooden tray painted black and dotted with tiny flowers.'},
+  {f:'painted-tray-green',    t:'Painted tray, green',         type:'Objects',  d:'The night I couldn\'t stop painting every wooden thing in my apartment.'},
+  {f:'eye-vine',              t:'Eye on the vine',             type:'Drawing',  d:'Ink, stippling and watercolor: a branch that turns into a landscape, and is watching you.'},
+  {f:'cameras-vines',         t:'Vintage cameras',             type:'Drawing',  d:'Old cameras drifting through a tangle of blue vines.'},
+  {f:'portrait-blue-stripes', t:'Portrait in blue stripes',    type:'Drawing',  d:'Ink and marker portrait.'},
+  {f:'sketching-on-the-train',t:'Sketching on the L',          type:'Drawing',  d:'A sketchbook drawing, held up on the train ride home.'},
+  {f:'layla-ringos',          t:'Layla & Ringo\'s',            type:'Drawing',  d:'Pendant lamps and shelves, drawn at a café.'},
+  {f:'faces-sketch',          t:'Faces & tangles',             type:'Drawing',  d:'Pencil portraits overlaid with pen loops, dots and seed pods.'},
+  {f:'thursday',              t:'Thursday',                    type:'Drawing',  d:'A two-pen drawing: just red and blue.'},
+  {f:'sunset-sailboats',      t:'Striped sunset',              type:'Drawing',  d:'A shoreline with sailboats under a striped sky.'},
+  {f:'abstract-blue',         t:'Blue abstraction',            type:'Drawing',  d:'Loose pen shapes, stippling and a chain.'},
+  {f:'bouquet',               t:'Graduation bouquet',          type:'Drawing',  d:'Ink and watercolor flowers.'},
+  {f:'window-lettering',      t:'Immigrants ♥ / ICE out',      type:'Protest',  d:'Cut-paper lettering in my front windows during a Chicago snowstorm. (Photo flipped so it reads from inside.)'},
+  {f:'vines-wall',            t:'Winter vines',                type:'Photo',    d:'Dried vines on a gray wood wall. The kind of pattern I can\'t walk past.'},
+];
+const grid=document.getElementById('grid'), filters=document.getElementById('filters');
+const types=['All',...new Set(ART.map(a=>a.type))];
+let current='All', visible=[];
+types.forEach(t=>{
+  const b=document.createElement('button'); b.className='chip'; b.setAttribute('aria-pressed',t==='All');
+  const n=t==='All'?ART.length:ART.filter(a=>a.type===t).length;
+  b.innerHTML=`${t}<span class="n">${n}</span>`;
+  b.onclick=()=>{current=t;[...filters.children].forEach(c=>c.setAttribute('aria-pressed',c===b));render();};
+  filters.appendChild(b);
+});
+function render(){
+  visible=ART.filter(a=>current==='All'||a.type===current);
+  grid.innerHTML='';
+  visible.forEach((a,i)=>{
+    const b=document.createElement('button'); b.className='tile'; b.setAttribute('aria-label',a.t);
+    b.innerHTML=`<img src="../images/crops/${a.f.replace('../','').replace(/\//g,'_')}.jpg" alt="" loading="lazy"><span class="lab"><b>${a.t}</b><span>${a.type}</span></span>`;
+    b.onclick=()=>show(i); grid.appendChild(b);
+  });
+}
+const $=id=>document.getElementById(id);
+const lb=$('lb'),lbImg=$('lbImg'),lbTitle=$('lbTitle'),lbType=$('lbType'),lbDesc=$('lbDesc'),lbLink=$('lbLink'); let idx=0;
+function show(i){
+  idx=(i+visible.length)%visible.length; const a=visible[idx];
+  lbImg.src=`../images/art/${a.f}.jpg`; lbImg.alt=a.t;
+  lbTitle.textContent=a.t; lbType.textContent=a.type; lbDesc.textContent=a.d;
+  if(a.link){lbLink.href=a.link;lbLink.hidden=false}else lbLink.hidden=true;
+  if(!lb.open) lb.showModal();
+}
+$('prev').onclick=()=>show(idx-1); $('next').onclick=()=>show(idx+1); $('close').onclick=()=>lb.close();
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+document.addEventListener('keydown',e=>{if(!lb.open)return;if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+render();
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
