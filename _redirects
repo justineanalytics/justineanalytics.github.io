@@ -1,0 +1,16 @@
+# Netlify redirects for a single site serving two domains.
+# Primary domain: justinebraunresearch.com  |  Domain alias: squidbird.io
+# Rules run top to bottom; the first match wins.
+
+# 1) Anyone visiting squidbird.io sees the /squidbird folder, while the address bar stays on squidbird.io.
+https://squidbird.io/*        /squidbird/:splat   200!
+https://www.squidbird.io/*    https://squidbird.io/:splat   301!
+
+# 2) Anyone visiting justinebraunresearch.com/squidbird gets sent to the real Squidbird domain.
+/squidbird/*                  https://squidbird.io/:splat   301!
+
+# 3) Tidy the www version of the personal site.
+https://www.justinebraunresearch.com/*   https://justinebraunresearch.com/:splat   301!
+
+# 4) The old project URL now lives on the Community page.
+/draw-on-the-furniture/*      /community/#furniture   301

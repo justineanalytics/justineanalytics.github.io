@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Justine Braun — art, community & data</title>
+<meta name="description" content="Justine Braun is a Chicago artist, researcher, and coder who studies how people think, talk, search, and vote, and turns it into art, tools, and community.">
+<link rel="canonical" href="https://justinebraunresearch.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe6; --ink:#16182a; --soft:#56586b; --line:rgba(22,24,42,.14);
+    --coral:#e8604c; --teal:#2a8c82; --gold:#e3a72f; --pen:#3d8fd1; --card:#fbf8f2;
+    --serif:"Fraunces",Georgia,serif; --sans:"DM Sans",system-ui,sans-serif; --mono:"DM Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+  a{color:inherit}
+  img{display:block}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .mono{font-family:var(--mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(244,239,230,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--ink)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+  .name{font-family:var(--serif);font-size:1.3rem;font-weight:600;text-decoration:none}
+  .name i{font-weight:300}
+  .links{display:flex;gap:22px;list-style:none;align-items:center}
+  .links a{text-decoration:none;font-size:.95rem}
+  .links a:hover{text-decoration:underline;text-underline-offset:4px}
+  .pill{background:var(--coral);color:#fff;padding:7px 14px;border-radius:999px;border:1px solid var(--ink);font-weight:700}
+  .links a.pill:hover{text-decoration:none}
+  @media (max-width:760px){.links li.hide-m{display:none}}
+
+  .hero{border-bottom:1px solid var(--ink)}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;min-height:560px}
+  .hero-text{padding:80px 40px 60px 0;border-right:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center}
+  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5.4vw,4.3rem);line-height:1.02;letter-spacing:-.03em}
+  .hero h1 b{font-weight:700}
+  .hero h1 i{color:var(--coral)}
+  .hero p{margin-top:24px;font-size:1.2rem;color:var(--soft);max-width:30em}
+  .roles{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
+  .roles a{border:1px solid var(--ink);border-radius:999px;padding:5px 14px;text-decoration:none;background:var(--card)}
+  .roles a:hover{background:var(--ink);color:var(--paper)}
+  .hero-art{position:relative;overflow:hidden;background:var(--card)}
+  .hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .caption{position:absolute;left:16px;bottom:14px;background:var(--paper);border:1px solid var(--ink);padding:4px 10px}
+
+  .strip{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));border-top:1px solid var(--ink)}
+  .strip a{display:block;aspect-ratio:1;overflow:hidden;border-right:1px solid var(--ink)}
+  .strip a:last-child{border-right:0}
+  .strip img{width:100%;height:100%;object-fit:cover;transition:transform .3s,filter .3s;filter:saturate(.9)}
+  .strip a:hover img{transform:scale(1.08);filter:none}
+  @media (max-width:860px){.strip{grid-template-columns:repeat(5,minmax(0,1fr))}.strip a:nth-child(5){border-right:0}.strip a:nth-child(n+6){border-top:1px solid var(--ink)}}
+  .film{background:#14151f;color:#e9e9f2}
+  .film h2.big{color:#fff}
+  .film .head p{color:#a9abc0}
+  .stills{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;gap:12px}
+  .stills figure{margin:0;overflow:hidden;border:1px solid #3a3c52}
+  .stills img{width:100%;height:100%;object-fit:cover;display:block}
+  .stills .wide{grid-column:1/-1;aspect-ratio:2.2/1}
+  .stills img{object-position:center 40%}
+  .stills .a{aspect-ratio:16/9}
+  .stills .b{aspect-ratio:auto}
+  .filmrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+  .filmrow figure{aspect-ratio:16/9;margin:0;min-width:0;overflow:hidden;border:1px solid #3a3c52}
+  .film img{max-width:100%}
+  .video{position:relative;aspect-ratio:16/9;border:1px solid #3a3c52;background:#000 url(images/film/still-flowers-camera.jpg) center/cover}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .yt{display:inline-block;margin-top:14px;color:var(--gold);text-decoration:none}
+  .yt:hover{text-decoration:underline}
+  .film .logline{margin-top:26px;max-width:42em;font-size:1.08rem;color:#cfd0de}
+  .film .logline b{color:#fff}
+  @media (max-width:760px){.stills{grid-template-columns:1fr}.filmrow{grid-template-columns:1fr}}
+  @media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero-text{border-right:0;padding:56px 0 40px}.hero-art{min-height:340px;border-top:1px solid var(--ink);margin:0 -20px}}
+
+  .studio{background:linear-gradient(90deg,rgba(22,24,42,.97) 55%,rgba(22,24,42,.82)),url(images/art/cameras-vines.jpg) center/cover;color:var(--paper);border-bottom:1px solid var(--ink)}
+  .studio .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding-top:34px;padding-bottom:34px}
+  .studio svg{width:66px;height:66px}
+  .studio h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.1;font-weight:500}
+  .studio h2 b{color:var(--gold);font-weight:700}
+  .studio p{color:#c8c9d8;margin-top:6px}
+  .go{display:inline-block;background:var(--gold);color:var(--ink);text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px;border:1px solid var(--paper);white-space:nowrap;box-shadow:4px 4px 0 var(--coral)}
+  @media (max-width:760px){.studio .wrap{grid-template-columns:1fr}}
+
+  section{padding:84px 0;border-bottom:1px solid var(--ink)}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px;flex-wrap:wrap}
+  h2.big{font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.02em;line-height:1}
+  h2.big b{font-weight:700}
+  .head p{color:var(--soft);max-width:28em}
+  .more{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:8px 16px;background:var(--card);white-space:nowrap}
+  .more:hover{background:var(--ink);color:var(--paper)}
+
+  .pillars{border-bottom:1px solid var(--ink);background:var(--card)}
+  .pillars .wrap{display:grid;grid-template-columns:repeat(3,1fr);padding:0}
+  .pl{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:220px;padding:22px;text-decoration:none;color:#fff;overflow:hidden;border-right:1px solid var(--ink)}
+  .pl:last-child{border-right:0}
+  .pl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .4s}
+  .pl::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(22,24,42,.85));z-index:1}
+  .pl:hover img{transform:scale(1.05)}
+  .pl>*:not(img){position:relative;z-index:2}
+  .pl .pn{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--gold)}
+  .pl b{font-family:var(--serif);font-size:2.4rem;line-height:1;margin:4px 0 6px}
+  .pl span:last-child{font-size:.95rem;color:#e7e6f0}
+  @media (max-width:760px){.pillars .wrap{grid-template-columns:1fr}.pl{border-right:0;border-bottom:1px solid var(--ink);min-height:170px}}
+  /* art teaser */
+  .feature-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+  .work{background:var(--card);border:1px solid var(--ink);display:grid;grid-template-columns:1fr 1.1fr;text-decoration:none}
+  .work .img{border-right:1px solid var(--ink);overflow:hidden;min-height:230px}
+  .work .img img,.work .img svg{width:100%;height:100%;object-fit:cover;display:block}
+  .work .txt{padding:20px 22px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+  .work h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1.15}
+  .work p{color:var(--soft);font-size:.95rem}
+  .meta{color:var(--soft);display:flex;justify-content:space-between;gap:10px}
+  .meta .s{color:var(--coral)}
+  .thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+  .thumbs a{display:block;aspect-ratio:1;overflow:hidden;border:1px solid var(--ink);background:var(--card)}
+  .thumbs img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .thumbs a:hover img{transform:scale(1.08)}
+  @media (max-width:900px){.feature-row{grid-template-columns:1fr}.thumbs{grid-template-columns:repeat(4,1fr)}}
+  @media (max-width:520px){.work{grid-template-columns:1fr}.work .img{border-right:0;border-bottom:1px solid var(--ink)}}
+
+  /* community */
+  .comm{display:grid;grid-template-columns:1.15fr 1fr;gap:22px}
+  .cc{border:1px solid var(--ink);background:var(--card);text-decoration:none;display:flex;flex-direction:column;box-shadow:6px 6px 0 var(--coral);transition:transform .2s}
+  .cc:hover{transform:translate(-2px,-2px)}
+  .cc .pic{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--ink)}
+  .cc .pic img{width:100%;height:100%;object-fit:cover}
+  .cc .tx{padding:20px 22px 24px}
+  .cc h3{font-family:var(--serif);font-size:1.7rem;line-height:1.1;margin:6px 0 8px}
+  .cc p{color:var(--soft)}
+  .slide{aspect-ratio:16/10;border-bottom:1px solid var(--ink);background:var(--pen);display:flex;flex-direction:column;justify-content:center;padding:28px 32px;color:#fff;position:relative;overflow:hidden}
+  .slide .t{font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.05;text-shadow:2px 2px 0 var(--ink)}
+  .slide ul{margin-top:14px;list-style:none;font-size:.95rem}
+  .slide li::before{content:"▸ ";color:var(--gold)}
+  .slide .pg{position:absolute;right:16px;bottom:12px;font-family:var(--mono);font-size:.7rem;opacity:.8}
+  @media (max-width:860px){.comm{grid-template-columns:1fr}}
+
+  .papers{border-top:1px solid var(--ink)}
+  .paper{display:grid;grid-template-columns:110px 1fr 1.2fr auto;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+  .paper .yr{font-family:var(--serif);font-size:1.6rem;font-weight:300}
+  .paper h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.2}
+  .paper p{color:var(--soft);font-size:.97rem}
+  .paper a.rd{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  @media (max-width:860px){.paper{grid-template-columns:1fr;gap:6px}}
+
+  .about .wrap{display:grid;grid-template-columns:.8fr 1.4fr;gap:56px;align-items:start}
+  .about .photo{border:1px solid var(--ink);overflow:hidden;box-shadow:6px 6px 0 var(--gold)}
+  .about .photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .about figcaption{padding:8px 10px;background:var(--card);border-top:1px solid var(--ink)}
+  .about p{margin-bottom:14px;font-size:1.08rem}
+  .about h2{margin-bottom:22px}
+  @media (max-width:860px){.about .wrap{grid-template-columns:1fr}.about .photo{max-width:340px}}
+
+  .contact{background:var(--coral);color:#fff}
+  .contact h2.big{color:#fff}
+  .contact .row{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+  .contact a.btn{background:#fff;color:var(--ink);text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px;border:1px solid var(--ink)}
+  footer{padding:24px 0;font-size:.9rem;color:var(--soft)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="index.html">Justine <i>Braun</i></a>
+    <ul class="links">
+      <li class="hide-m"><a href="art/index.html">Art</a></li>
+      <li class="hide-m"><a href="community/index.html">Community</a></li>
+      <li class="hide-m"><a href="#data">Data</a></li>
+      <li class="hide-m"><a href="#about">About</a></li>
+      <li><a class="pill" href="https://squidbird.io">Squidbird ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <p class="mono" style="color:var(--coral);margin-bottom:18px">Art · Community · Data · Chicago</p>
+      <h1>I see <b>patterns</b> in people and systems. I make <i>art</i> and <i>products</i> inspired by those patterns.</h1>
+      <p>Fifteen years of studying how people talk, search, and vote, turned into drawings, films, public experiments, a table covered in friends' doodles, and the occasional resurrected skeleton.</p>
+      <div class="roles mono"><a href="art/index.html">Art</a><a href="community/index.html">Community</a><a href="#data">Data</a></div>
+    </div>
+    <div class="hero-art">
+      <img src="images/art/succulents.jpg" alt="Dense hand-drawn succulents and tiny star flowers in teal, blue and pink">
+      <span class="caption mono">Succulent study</span>
+    </div>
+  </div>
+  <div class="strip" aria-label="A few pieces of art">
+    <a href="art/index.html"><img src="images/crops/cameras-vines.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/guaruras-collage.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/painted-table-2.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/eye-vine.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/resin-coasters.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/dreamscape.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/coloring-poster.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/surveillance-collage.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/dog-in-glasses.jpg" alt=""></a>
+    <a href="art/index.html"><img src="images/crops/faces-sketch.jpg" alt=""></a>
+  </div>
+</header>
+
+<!-- ART · COMMUNITY · DATA -->
+<div class="pillars">
+  <div class="wrap">
+    <a href="art/index.html" class="pl"><img src="images/crops/pink-river-painting.jpg" alt=""><span class="pn">01</span><b>Art</b><span>Drawing, painting, collage, resin, cardboard, film.</span></a>
+    <a href="community/index.html" class="pl"><img src="images/community/resin-night-table.jpg" alt=""><span class="pn">02</span><b>Community</b><span>Art nights, resin nights, and PowerPoint parties.</span></a>
+    <a href="#data" class="pl"><img src="images/art/data-art-stripes.jpg" alt=""><span class="pn">03</span><b>Data</b><span>15 years of studying how people talk, search, and vote.</span></a>
+  </div>
+</div>
+
+<div class="studio">
+  <div class="wrap">
+    <img class="sqlogo" src="squidbird/images/logo-white.svg" alt="Squidbird logo" width="66" height="66" style="width:66px;height:66px;object-fit:contain">
+    <div>
+      <h2>Want this kind of thinking for your brand? That's <b>Squidbird</b>, my studio.</h2>
+      <p>Research, custom tools and automation, and campaigns people remember, for brands, startups, and mission-driven organizations.</p>
+    </div>
+    <a class="go" href="https://squidbird.io">Visit squidbird.io →</a>
+  </div>
+</div>
+
+<!-- ART TEASER -->
+<section id="art">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="big"><b>Art</b></h2>
+      <a class="more" href="art/index.html">See all the art →</a>
+    </div>
+    <div class="feature-row">
+      <a class="work" href="art/index.html">
+        <div class="img" aria-hidden="true">
+          <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" style="background:#ece4d4">
+            <rect x="20" y="226" width="260" height="48" fill="#e8604c" stroke="#16182a" stroke-width="2"/>
+            <text x="150" y="256" text-anchor="middle" font-family="Fraunces,serif" font-size="14" font-weight="700" fill="#fff" textLength="236" lengthAdjust="spacingAndGlyphs">IS THE AMERICAN DREAM DEAD?</text>
+            <g stroke="#16182a" stroke-width="3" fill="#fbf8f2" stroke-linecap="round">
+              <circle cx="150" cy="90" r="34"/>
+              <path d="M150 124v76M120 145h60M126 162h48M132 179h36M150 150l-40 40M150 150l40 40" fill="none"/>
+            </g>
+            <circle cx="138" cy="86" r="7" fill="#16182a"/><circle cx="162" cy="86" r="7" fill="#16182a"/>
+            <path d="M138 108h24" stroke="#16182a" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <div class="meta mono"><span>Public art · 2026</span><span class="s">In progress</span></div>
+          <h3>Is the American Dream Dead?</h3>
+          <p>A resurrected skeleton Studs Terkel and Tuxedo, an offline AI speaker, ask 100 Chicagoans what Terkel asked in 1980.</p>
+        </div>
+      </a>
+      <a class="work" href="#film">
+        <div class="img"><img src="images/film/still-flowers-camera.jpg" alt=""></div>
+        <div class="txt">
+          <div class="meta mono"><span>Short film · 2026</span><span>48HFP Chicago</span></div>
+          <h3>We Are Here</h3>
+          <p>A first date, a confession about an illegal abortion in Texas, and the paranoia of being watched.</p>
+        </div>
+      </a>
+    </div>
+    <div class="thumbs">
+      <a href="art/index.html"><img src="images/crops/cafe-scene.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/river-card.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/thursday.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/portrait-blue-stripes.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/painted-tray-lotus.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/cardboard-jaws.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/layla-ringos.jpg" alt="" loading="lazy"></a>
+      <a href="art/index.html"><img src="images/crops/bouquet.jpg" alt="" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- FILM -->
+<section class="film" id="film">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="big"><b>We Are Here</b></h2>
+      <p class="mono">48 Hour Film Project · Chicago 2026 · made with my brother</p>
+    </div>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/_ZEfBbxXsQM" title="We Are Here (48HFP Chicago 2026)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <a class="yt mono" href="https://youtu.be/_ZEfBbxXsQM" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+    <p class="logline">A first date, a confession about an illegal abortion in Texas, and then the slow creep of being watched. <b>A short about government and social surveillance</b>, and the uncertainty, paranoia, and loss of control that come with it.</p>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" style="background:#efe8db">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="big"><b>Community</b>, art &amp; conversation</h2>
+      <a class="more" href="community/index.html">About the gatherings →</a>
+    </div>
+    <p class="sub" style="color:var(--soft);max-width:38em;margin:-10px 0 30px;font-size:1.08rem">I host regular nights at my place for people to talk, make things, and nerd out together: paint-pen tables, resin nights, and PowerPoint parties. Some of my favorite work has come out of a crowded living room.</p>
+    <div class="comm">
+      <a class="cc" href="community/index.html#furniture">
+        <div class="pic"><img src="images/art/table/04-finished-wide.jpg" alt="The finished communal table drawing" loading="lazy"></div>
+        <div class="tx">
+          <p class="mono" style="color:var(--coral)">Monthly art nights</p>
+          <h3>Draw on the Furniture</h3>
+          <p>Ten friends, paint pens, wine, and one plywood table. Everyone took a corner, then I stitched them into one landscape.</p>
+        </div>
+      </a>
+      <a class="cc" href="community/index.html#powerpoint">
+        <div class="pic"><img src="images/community/ppt-antarctica.jpg" alt="A friend in a tinfoil hat presenting a slide about Antarctica" loading="lazy"></div>
+        <div class="tx">
+          <p class="mono" style="color:var(--coral)">Talks &amp; slideshows</p>
+          <h3>PowerPoint Parties</h3>
+          <p>Everyone brings a short presentation about whatever they're obsessed with. The more niche, the better.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="data">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="big"><b>Data</b> &amp; research</h2>
+      <p>How social media shapes what we search, who we trust, and how we vote.</p>
+    </div>
+    <div class="papers">
+      <div class="paper"><div class="yr">~2016</div><h3>Silo Season</h3><p>Mapped how social feeds were sorting voters into echo chambers that never overlapped. The data called the 2016 result.</p><a class="rd" href="#">Read →</a></div>
+      <div class="paper"><div class="yr">2015</div><h3>You Google What You Scroll</h3><p>An infographic using #JeSuisCharlie to show how hashtags started steering Google searches, and with them the news cycle.</p><a class="rd" href="#">View →</a></div>
+      <div class="paper"><div class="yr">—</div><h3>The Social Media Macroscope</h3><p>Worked with Joe Yun on the University of Illinois' open social-data research platform, and spoke about it at a conference there.</p><a class="rd" href="#">More →</a></div>
+      <div class="paper"><div class="yr">2026</div><h3>American Dreams, then &amp; now</h3><p>The written analysis from the Terkel project: keyword and theme shifts from 1980 to today, by generation. Coming after the interviews wrap.</p><a class="rd" href="#">Soon</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <figure class="photo">
+      <img src="images/art/sketching-on-the-train.jpg" alt="Justine on the train holding up a colored sketchbook drawing">
+      <figcaption class="mono">Sketching on the L</figcaption>
+    </figure>
+    <div>
+      <h2 class="big">Hi, I'm <b>Justine</b>.</h2>
+      <p>I started as a research assistant at the University of Illinois and spent the next fifteen years in people analytics, social media research, and AI. I've worked on strategy, research, dev, and analytics teams, mining big social data for some of the biggest brands in the world.</p>
+      <p>Along the way I noticed that everything I make comes back to the same three things: art, community, and data. This site is where the art, the research, and the gatherings live. When I do that work for clients, it's under my studio, <a href="https://squidbird.io">Squidbird</a>.</p>
+      <p>I care a lot about AI ethics, and about making sure the tools we build work for everyone, not just the people who build them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="big">Say <b>hello</b>.</h2>
+    <p style="margin-top:12px;font-size:1.1rem">Collaborations, exhibitions, talks, an invite to the next gathering, or just a good weird idea.</p>
+    <div class="row">
+      <a class="btn" href="mailto:YOUR-EMAIL">Email me</a>
+      <a class="btn" href="YOUR-LINKEDIN-URL">LinkedIn: Justine Braun Research</a>
+      <a class="btn" href="https://squidbird.io">Hire Squidbird ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Justine Braun · Chicago</span>
+    <span>Studio work: <a href="https://squidbird.io">Squidbird LLC</a></span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
